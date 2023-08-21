@@ -60,4 +60,49 @@ print(count)
 #6084
 h, b, c, s = map(int, input().split())
 m = h*b*c*s/8/1024/1024
-print(format(m, ".2f"), 'MB', sep=' ')s-
+print(format(m, ".2f"), 'MB', sep=' ')
+
+#6085
+w, h, b = map(int, input().split())
+res = w*h*b/8/1024/1024
+print(format(res, ".2f"), 'MB', sep=' ')
+
+#6086
+n = int(input())
+i=1
+j=1
+sum=0
+while i==1:
+    sum += j
+    if(sum>=n):
+        print(sum)
+        break
+    j+=1
+
+#6087
+n = int(input())
+for i in range (1, n+1, 1) :
+    if i%3==0 :
+        continue
+    print(i, end=' ')
+
+#6088
+a, d, n = map(int, input().split())
+sum = int(a)
+for i in range(0, n-1) :
+    sum += d
+print(sum)
+
+#6089
+a, r, n = map(int, input().split())
+result = int(a)
+for i in range(0, n-1) :
+    result *= r
+print(result)
+
+#6090
+a, m, d, n = map(int, input().split())
+result = int(a)
+for i in range(0, n-1) :
+    result = result*m+d 
+print(result)
