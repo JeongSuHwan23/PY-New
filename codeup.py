@@ -120,3 +120,30 @@ seq_list = list(map(int,input().split()))
 for i in range (1, n+1) :
     print(seq_list[n-i],end=" ")
 
+#2023-09-10
+
+#6094
+n = int(input())
+list1 = list(map(int,input().split()))
+min = list1[0]
+for i in range(1, n) :
+    if(min>list1[i]) :
+        min = list1[i]
+print(min)
+
+#6095
+d=[]                  
+for i in range(20) :
+  d.append([])        
+  for j in range(20) : 
+    d[i].append(0)    
+
+n = int(input())
+for i in range(n) :
+  x, y = input().split()
+  d[int(x)][int(y)] = 1
+
+for i in range(1, 20) :
+  for j in range(1, 20) : 
+    print(d[i][j], end=' ')    
+  print()                          
