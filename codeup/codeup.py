@@ -207,7 +207,30 @@ for i in range(1, h+1) :
     print(m[i][j], end=' ')
   print()
 
-    
+#2023-09-22
+
+#6098
+list_a = []
+w, h = 1, 1
+for i in range (10) :
+    row = list(map(int,input().split))
+    list_a.append(row)
+
+while True :
+    if list_a[w][h] == 0 : 
+        list_a[w][h] = 9
+        h += 1
+    elif (list_a[w][h] == 1) :
+        w += 1
+        h -= 1
+    else :
+       list_a[w][h] = 9
+       break
+       
+for i in range (10) :
+    for j in range (10) :
+        print(list_a[i][j], end=" ")
+    print()
 
 
 
