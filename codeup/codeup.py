@@ -232,6 +232,40 @@ for i in range (10) :
         print(list_a[i][j], end=" ")
     print()
 
+#2023-10-11
 
+#1916
+def f(num):
+    if num == 0 or num == 1:
+        return num
+    if l[num] == 0:
+        l[num] = f(num - 1) + f(num - 2)
+    return l[num]
+
+def main():
+    n = int(input())
+    global l  
+    l = [0] * 200
+    print(f(n) % 10009)
+
+if __name__ == "__main__":
+    main()
+
+#1905
+import sys
+sys.setrecursionlimit(1000000)
+
+def f(num) :
+    if (num==1) :
+        return 1
+    return num + f(num-1)
+
+def main() :
+    n = int(input())
+    print(f(n))
+
+
+if __name__ == "__main__" : 
+    main()
 
     
