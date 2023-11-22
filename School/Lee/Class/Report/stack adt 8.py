@@ -1,5 +1,6 @@
 class Stack:
 
+  #스택 초기화 하는 함수
   def __init__(self):
     self.stack = []
     self.size = 3
