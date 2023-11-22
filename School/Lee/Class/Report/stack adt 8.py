@@ -58,6 +58,7 @@ class Stack:
     s.top = -1
     print("Clear")
 
+
 if __name__ == "__main__":
   s = Stack()
   while True:
