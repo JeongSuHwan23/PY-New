@@ -23,7 +23,6 @@ class Stack:
       self.top += 1
       self.stack.insert(self.top, element)
 
-
   #가장 위에 있는 값을 출력하고 제거하는 함수
   def pop(self):
     if self.isEmpty():
