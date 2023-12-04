@@ -1,9 +1,9 @@
 class Stack:
 
   #스택 초기화 하는 함수
-  def __init__(self):
-    self.stack = []
-    self.size = 3
+  def __init__(self, size=3):
+    self.stack = [None] * 3
+    self.size = size
     self.top = -1
 
   #스택이 비어있는지 확인하는 함수
@@ -12,21 +12,20 @@ class Stack:
 
   #스택이 가득 차 있는지 확인하는 함수
   def isFull(self):
-    return self.top == self.size-1
+    return self.top == self.size - 1
 
   #값을 삽입하는 함수
   def push(self, element):
     if self.isFull():
-      print("Full")
-      pass
-    else:
-      self.top += 1
-      self.stack.insert(self.top, element)
+      print("Stack is full")
+      return
+    self.top += 1
+    self.stack.insert(self.top, element)
 
   #가장 위에 있는 값을 출력하고 제거하는 함수
   def pop(self):
     if self.isEmpty():
-      print("Empty")
+      print("Stack is empty")
       pass
     else:
       print("pop :", self.stack[self.top])
@@ -35,19 +34,25 @@ class Stack:
   #가장 위에 있는 값만 출력하는 함수
   def peek(self):
     if self.isEmpty():
-      print("Empty")
+      print("Stack is empty")
       pass
     else:
       print("peek :", self.stack[self.top])
 
-  #스택 전체를 출력하는 함수
+  #스택 출력하는 함수
   def printAll(self):
+    if self.isEmpty():
+      print("Stack is empty")
+      return
     for i in range(self.top+1):
       print(self.stack[i], end="->")
     print()
 
-  #모든 값을 출력하는 함수
+  #모든 값을 더하는 함수
   def valueSum(self):
+    if self.isEmpty():
+      print("Stack is empty")
+      return
     sum = 0
     for i in range (self.top+1):
       sum += self.stack[i]
@@ -56,7 +61,7 @@ class Stack:
   #스택 초기화 하는 함수
   def clear(self):
     s.top = -1
-    print("Clear")
+    print("Stakc cleared")
 
 
 if __name__ == "__main__":
