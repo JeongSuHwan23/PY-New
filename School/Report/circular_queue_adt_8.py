@@ -1,16 +1,20 @@
-class Queue:
+class Circular_Queue:
+  #queue 초기화
   def __init__(self, size=5):
     self.queue = [None] * 5
     self.size = size
     self.front = 0
     self.rear = 0
 
+  #queue 비어있는지 확인
   def isEmpty(self):
     return self.front == self.rear
 
+  #queue 가득 찼는지 확인
   def isFull(self):
     return (self.rear + 1) % self.size == self.front
 
+  #data를 queue에 삽입
   def enqueue(self, data):
     if self.isFull():
       print("Queue is full")
@@ -19,6 +23,7 @@ class Queue:
     self.rear = (self.rear + 1) % self.size
     self.queue[self.rear] = data
 
+  #가장 처음 들어온 값 출력 및 제거
   def dequeue(self):
     if self.isEmpty():
       print("Queue is empty")
@@ -27,6 +32,7 @@ class Queue:
     self.front = (self.front + 1) % self.size
     print("Dequeue :", self.queue[self.front])
 
+  # 가장 처음 들어온 값 출력 및 제거
   def peek(self):
     if self.isEmpty():
       print("Queue is empty")
@@ -48,7 +54,7 @@ class Queue:
 
 
 if __name__ == "__main__":
-  q = Queue()
+  q = Circular_Queue()
   while True:
     print("1 : enqueue | 2 : dequeue | 3 : peek | 4 : print | 0 : exit")
     n = int(input())

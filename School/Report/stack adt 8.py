@@ -1,8 +1,8 @@
 class Stack:
 
   #스택 초기화 하는 함수
-  def __init__(self, size=3):
-    self.stack = [None] * 3
+  def __init__(self, size=10):
+    self.stack = [None] * 10
     self.size = size
     self.top = -1
 
@@ -18,45 +18,44 @@ class Stack:
   def push(self, element):
     if self.isFull():
       print("Stack is full")
-      return
-    self.top += 1
-    self.stack.insert(self.top, element)
+    else:
+      self.top += 1
+      self.stack[self.top] = element
 
   #가장 위에 있는 값을 출력하고 제거하는 함수
   def pop(self):
     if self.isEmpty():
-      print("Stack is empty")
-      pass
+      return 0
     else:
-      print("pop :", self.stack[self.top])
-      self.top -= 1
+      self.top = self.top - 1
+      return self.stack[self.top+1]
 
   #가장 위에 있는 값만 출력하는 함수
   def peek(self):
     if self.isEmpty():
-      print("Stack is empty")
-      pass
+      return 0
     else:
-      print("peek :", self.stack[self.top])
+      return self.stack[self.top]
 
   #스택 출력하는 함수
   def printAll(self):
     if self.isEmpty():
       print("Stack is empty")
-      return
-    for i in range(self.top+1):
-      print(self.stack[i], end="->")
-    print()
+    else:
+      for i in range(self.top+1):
+        print(self.stack[i], end="->")
+      print()
 
   #모든 값을 더하는 함수
   def valueSum(self):
     if self.isEmpty():
       print("Stack is empty")
-      return
-    sum = 0
-    for i in range (self.top+1):
-      sum += self.stack[i]
-    print("Sum result is", sum)
+      return 0
+    else:
+      sum = 0
+      for i in range (self.top+1):
+        sum += self.stack[i]
+      return sum
 
   #스택 초기화 하는 함수
   def clear(self):
@@ -76,13 +75,23 @@ if __name__ == "__main__":
       s.push(value)
       continue
     elif n == 2:
-      s.pop()
+      data = s.pop()
+      if not data:
+        print("Stack is empty")
+      else:
+        print("Pop :", data)
       continue
     elif n == 3:
-      s.peek()
+      if not s.peek():
+        print("Stack is empty")
+      else:
+        print("Peek :", s.peek())
       continue
     elif n == 4:
-      s.valueSum()
+      if not s.valueSum():
+        print("Stack is empty")
+      else:
+        print("Sum result is", s.valueSum())
       continue
     elif n == 5:
       s.printAll()
