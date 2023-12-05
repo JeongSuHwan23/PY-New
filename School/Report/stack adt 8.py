@@ -40,11 +40,11 @@ class Stack:
   #스택 출력하는 함수
   def printAll(self):
     if self.isEmpty():
-      print("Stack is empty")
-    else:
-      for i in range(self.top+1):
-        print(self.stack[i], end="->")
-      print()
+      return 0
+
+    print_stack = self.stack[0 : self.top+1]
+
+    return print_stack
 
   #모든 값을 더하는 함수
   def valueSum(self):
@@ -94,7 +94,10 @@ if __name__ == "__main__":
         print("Sum result is", s.valueSum())
       continue
     elif n == 5:
-      s.printAll()
+      if not s.printAll():
+        print("Queue is empty.")
+      else:
+        print("[ top =", s.top, "] ==>", s.printAll())
       continue
     elif n == 6:
       s.clear()
