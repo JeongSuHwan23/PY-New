@@ -69,14 +69,39 @@ class Circular_Queue:
       index = search_queue.index(data)
       return (self.front + 1 + index) % self.size
     except ValueError:
-      print("Value not exist in the queue.")
+      print("Data not exist in the queue.")
       return
+
+  def max(self):
+    if self.isEmpty():
+      print("Queue is empty")
+      return
+
+    max_value = self.queue[self.front + 1]
+    max_index = self.front + 1
+
+    if self.front < self.rear:
+      for i in range(self.front + 2, self.rear + 1):
+        if self.queue[i] > max_value:
+          max_value = self.queue[i]
+          max_index = i
+    else:
+      for i in range(self.front + 2, self.size):
+        if self.queue[i] > max_value:
+          max_value = self.queue[i]
+          max_index = i
+      for i in range(self.rear + 1):
+        if self.queue[i] > max_value:
+          max_value = self.queue[i]
+          max_index = i
+
+    return max_value, max_index
 
 
 if __name__ == "__main__":
   q = Circular_Queue()
   while True:
-    print("1 : enqueue | 2 : dequeue | 3 : peek | 4 : print | 5 : search | 0 : exit")
+    print("1 : enqueue | 2 : dequeue | 3 : peek | 4 : print | 5 : search | 6 : max | 0 : exit")
     n = int(input())
 
     if n == 1:
@@ -98,11 +123,16 @@ if __name__ == "__main__":
       q.print()
       continue
     elif n == 5:
-      print("Data to search1 :", end="")
-      data = int(input())
-      data_location = q.search(data)
-      if data_location:
-        print("The location of the data is :", data_location)
+      print("Search data:", end="")
+      search_data = int(input())
+      result = q.search(search_data)
+      if result:
+        print("The index of the data is :", result)
+      continue
+    elif n == 6:
+      value, index = q.max()
+      if value:
+        print("The maximum value is [", value, "] and index is [", index, "]")
       continue
     elif n == 0:
       print("BYE")

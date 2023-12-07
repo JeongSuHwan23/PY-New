@@ -48,11 +48,34 @@ class Linear_queue:
 
     print("[Front =", self.front, "Rear =", self.rear, "] ==> ", print_queue)
 
+  def search(self, data):
+    if self.isEmpty():
+      print("Queue is empty.")
+      return
+
+    for i in range(self.front + 1, self.rear + 1):
+      if self.queue[i] == data:
+        return i
+
+    print("Data not exist in the queue.")
+    return
+
+  def sum(self):
+    if self.isEmpty():
+      print("Queue is empty.")
+      return
+
+    total = 0
+    for i in range(self.front + 1, self.rear + 1):
+      total += self.queue[i]
+
+    return total
+
 
 if __name__ == "__main__":
   q = Linear_queue()
   while True:
-    print("1 : enqueue | 2 : dequeue | 3 : peek | 4 : print | 0 : exit")
+    print("1 : enqueue | 2 : dequeue | 3 : peek | 4 : print | 5 : search | 6 : sum | 0 : exit")
     n = int(input())
 
     if n == 1:
@@ -73,6 +96,17 @@ if __name__ == "__main__":
     elif n == 4:
       q.print()
       continue
+    elif n == 5:
+      print("Search data :", end=" ")
+      search_data = int(input())
+      result = q.search(search_data)
+      if result:
+        print("The index of the data is :", result)
+      continue
+    elif n == 6:
+      total = q.sum()
+      if total:
+        print("The total sum is [", total, "]")
     elif n == 0:
       print("BYE")
       break
