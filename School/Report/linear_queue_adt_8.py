@@ -32,6 +32,7 @@ class Linear_queue:
     self.front += 1
     return self.queue[self.front]
 
+  # 가장 처음에 들어온 값 출력
   def peek(self):
     if self.isEmpty():
       print("Queue is empty")
@@ -48,6 +49,7 @@ class Linear_queue:
 
     print("[Front =", self.front, "Rear =", self.rear, "] ==> ", print_queue)
 
+  #입력 받은 값 찾는 함수
   def search(self, data):
     if self.isEmpty():
       print("Queue is empty.")
@@ -60,6 +62,7 @@ class Linear_queue:
     print("Data not exist in the queue.")
     return
 
+  #안에 있는 값 다 더하는 함수
   def sum(self):
     if self.isEmpty():
       print("Queue is empty.")
