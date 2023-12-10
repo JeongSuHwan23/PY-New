@@ -10,65 +10,61 @@ class Deque:
   def isEmpty(self):
     return self.front == self.rear
 
-  # 덱이 가득 찼는지 확인
+  # 덱이 가득 차 있는지 확인
   def isFull(self):
     return self.front == (self.rear + 1) % self.size
 
-  # 덱의 앞쪽에 값 넣기
+  # 덱의 앞쪽에 값 추가
   def addFront(self, data):
     if self.isFull():
       print("Deque is full")
       return
+    self.front = (self.front - 1) % self.size
+    self.deque[self.front] = data
 
-    self.deque[self.rear] = data
-    self.rear += 1
-
-  # 덱의 앞쪽에 있는 값 빼기
+  # 덱의 앞쪽에 있는 값 제거
   def deleteFront(self):
     if self.isEmpty():
       print("Deque is empty")
-      return
-
-    self.rear -= 1
-    data = self.deque[self.rear]
-    self.deque[self.rear] = None
-    print(data)
+      return None
+    data = self.deque[self.front]
+    self.deque[self.front] = None
+    self.front = (self.front + 1) % self.size
     return data
 
-  # 덱의 뒤쪽에 값 넣기
+  # 덱의 뒤쪽에 값 추가
   def addRear(self, data):
     if self.isFull():
       print("Deque is full")
       return
+    self.deque[self.rear] = data
+    self.rear = (self.rear + 1) % self.size
 
-    self.front -= 1
-    self.deque[self.front] = data
-
-  # 덱의 뒤쪽에 있는 값 빼기
+  # 덱의 뒤쪽에 있는 값 제거
   def deleteRear(self):
     if self.isEmpty():
       print("Deque is empty")
-      return
-
-    data = self.deque[self.front]
-    self.deque[self.front] = None
-    self.front += 1
-    print(data)
+      return None
+    self.rear = (self.rear - 1) % self.size
+    data = self.deque[self.rear]
+    self.deque[self.rear] = None
     return data
 
-  # 덱의 앞쪽에 있는 값 확인
+  # 덱의 앞쪽에 있는 값 반환
   def getFront(self):
     if self.isEmpty():
       print("Deque is empty")
       return
-    return self.deque[(self.rear-1)%self.size]
+    print(self.deque[self.front])
+    return self.deque[self.front]
 
-  # 덱의 뒤쪽에 있는 값 확인
+  # 덱의 뒤쪽에 있는 값 반환
   def getRear(self):
     if self.isEmpty():
       print("Deque is empty")
       return
-    return self.deque[self.front]
+    print(self.deque[(self.rear - 1) % self.size])
+    return self.deque[(self.rear - 1) % self.size]
 
 
 if __name__ == "__main__":
@@ -80,8 +76,6 @@ if __name__ == "__main__":
   d.addRear(4)
   d.addRear(5)
   print(d.deque)
-  print("Front: ", d.getFront())
-  print("Rear: ", d.getRear())
   d.deleteRear()
   print(d.deque)
   d.deleteFront()

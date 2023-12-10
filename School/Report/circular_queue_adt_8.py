@@ -29,17 +29,15 @@ class Circular_Queue:
     if self.isEmpty():
       print("Queue is empty")
       return
-    else:
-      self.front = (self.front + 1) % self.size
-      return self.queue[self.front]
+    self.front = (self.front + 1) % self.size
+    return self.queue[self.front]
 
   # 가장 처음 들어온 값 출력
   def peek(self):
     if self.isEmpty():
       print("Queue is empty")
       return
-    else:
-      return self.queue[self.front]
+    return self.queue[self.front]
 
   # queue 안에 있는 값 전체 출력
   def print(self):
