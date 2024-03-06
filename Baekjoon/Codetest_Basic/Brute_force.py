@@ -62,5 +62,37 @@ n, m = map(int,input().split())
 s = []
 dfs()
 
+#n과 m (4)
+def dfs(t):
+  if len(s) == m:
+    print(' '.join(map(str, s)))
+    return
+  
+  for i in range(1, n+1):
+    if i >= t:  
+      s.append(i)
+      dfs(i)
+      s.pop()
+      
+n, m = map(int,input().split())
+s = []
+dfs(0)
 
-
+#n과 m (5)
+def dfs():
+  if len(box) == m:
+    print(' '.join(map(str, box)))
+    return
+  
+  for i in range(n):  
+    if numbers[i] in box:
+      continue
+    box.append(numbers[i])
+    dfs()
+    box.pop()
+        
+n, m = map(int,input().split())
+numbers = [int(x) for x in input().split()]
+numbers.sort()
+box = []
+dfs()
